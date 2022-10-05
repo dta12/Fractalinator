@@ -1,1 +1,9 @@
 # Fractalinator
+## Dastan
+* generation.html
+## Garrett
+* gallery.html
+## Zack
+* login.html
+## Rodrick
+* index.html
