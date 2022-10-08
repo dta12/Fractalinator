@@ -2,26 +2,48 @@
     <head>
         {# 
         
-            Note the inclusion of our stylesheet below.
+            This is a comment - it won't show up in the HTML.
 
+            Templates allow us to dynamically generate HTML - this file will be 
+            interpreted and the output will be sent to the browser.  View the page 
+            source in your browser to see what actually comes through.
+            
+            The line below inserts the "page_title" variable into the HTML output.
+        
+            
         #}
         <link rel="stylesheet" href="/s/style.css">
-        <title>HTML Samples with CSS</title>
+        <title>{{page_title}}</title>
     </head>
     <body>
-        <header>
-            <h1>HTML Samples with CSS</h1>
+        <header>{#
+            
+            We can use if statements inside of templates, too:
+            
+            #}
+            <div><h1>Fractinalator {% if page_title %}: {{page_title}}{% endif %} </div>
+            
+            <a href="generation.html" class="headbtn btn-1">Generate</a>
+            <a href="gallery.html" class="headbtn btn-1">Gallery</a>
+            <a href="#fractemplates" class="headbtn btn-1">Templates</a>
+            <a href="signup.html" class="headbtn btn-2">Sign Up</a>
+            <a href="login.html" class="headbtn btn-3">Log In</a>
+            
+          
+            
+            
+            
         </header>
-        <nav>
-            <a href="/p/links.html">Link Samples</a>
-            <a href="/p/images.html">Image Samples</a>
-            <a href="/p/lists.html">List Samples</a>
-            <a href="/p/sections.html">Section Samples</a>
-            <a href="/p/tables.html">Table Samples</a>
-            <a href="/p/forms.html">Form Samples</a>
-            <a href="/p/absolutes.html">Absolute Positioning</a>
-        </nav>
-        <section>
+    
+        <section>{#
+            
+            <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+            <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+            <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+            A "block" can be replaced when we render this template.
+            
+            #}
+            <br><br><br><br><br><br><br><br><br><br><br>
             {% block content %}{% endblock %}
         </section>
     </body>
