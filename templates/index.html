@@ -1,4 +1,39 @@
 {% extends '_base.html' %}
+{% block header %}
+This is the header area for the main page.
+{% endblock %}
 {% block content %}
-This is an HTML file, and it is full of links to samples.
+<section>
+<h2><center>Fractinalator</center></h2>
+<center><p>Welcome to your Fractinalator. Based on your input of numbers<br>
+ your Fractinalator will generate a fractal model visual that you <br>
+ can store in your own fractal library and/or even export if you'd like <br>
+If you're ready to generate your own fractal, hit generate below <br>
+Feel free to also scroll down and look at some <a href="#fractemplates">fractal templates</a><br>
+ If you're interested or want a starting point for your own!<br>
+ If you're ready to generate your fractal from scratch, click generate below! </p><br><br><br>
+ </center></section> <!-- Going to Center with CSS later -->
+
+ <center> <a href="generation.html" class="btn btn-1">Generate</a><br></center> 
+ changes
+
+
+</section>
+
+ <section id="fractemplates">
+    <center>
+    <br><br><br><br>
+    <h2>Templates</h2>
+    <center><strong>Click any template below to explore it on the generation page</strong></center><br>
+    <a href="generation.html"> <img src="/s/f1.jpg" alt="temp1" width="200" height="200"> 
+    <a href="generation.html"> <img src="/s/f1.jpg" alt="temp1" width="200" height="200">
+    <a href="generation.html"> <img src="/s/f1.jpg" alt="temp1" width="200" height="200"> <br>
+    <a href="generation.html"> <img src="/s/f1.jpg" alt="temp1" width="200" height="200">
+    <a href="generation.html"> <img src="/s/f1.jpg" alt="temp1" width="200" height="200">
+    <a href="generation.html"> <img src="/s/f1.jpg" alt="temp1" width="200" height="200">
+     </center>
+ </section> 
+
+
+
 {% endblock %}
