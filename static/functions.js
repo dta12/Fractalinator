@@ -4,7 +4,6 @@ function runDrawing() {
     var len = document.getElementById('Length').valueAsNumber;
     var bwidth = document.getElementById('BranchWidth').valueAsNumber;
     if (angle !== NaN && len !== NaN && bwidth !== NaN ){
-        console.log(angle + " " + len + " " + bwidth);
         draw(400, 600, len, angle, bwidth);
     }else {
         draw(400, 600, 120, 0, 10);
@@ -14,7 +13,6 @@ function runDrawing() {
 function draw(startX, startY, len, angle, branchWidth) {
     var myCanvas = document.getElementById("my_canvas");
     var ctx = myCanvas.getContext("2d");
-    ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
     ctx.lineWidth = branchWidth;
 
     ctx.beginPath();
