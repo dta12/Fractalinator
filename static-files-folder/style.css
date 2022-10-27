@@ -1,102 +1,127 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial;
+  background-color: lightblue;
 }
 
-td {
-    border-style: dotted;
-    border-width: thin;
-    padding: 2px;
-}
-
-.noborder td {
-    border-style: none;
-    border-radius: 20px;
-    padding: 10px;
-    background: lightcyan;
-}
-
-th {
-    font-weight: bold;
-    font-family: Verdana, sans-serif;
-}
+/* Rodrick's styling */
 
 h1 {
-    color: midnightblue;
-    background-color: lightblue;
-    border-width: 0px 0px thin 0px;
-    border-style: solid;
+  color: midnightblue;
+  height: 100px;
+  background-color: cyan;
+  border-width: 0px 0px thin 0px;
+  border-style: solid;
 }
 
-h2 { 
-    color: darkblue;
-    background-color: none;
+.btn {
+  padding: 10px;
+  color: white;
+}
+.btn-1 {
+  background-color: purple;
+  padding: 32px 16px;
 }
 
-article {
-    border-width: 0px medium 0px medium;
-    border-style: dashed;
-    padding: 2em;
-    margin: 2em;
+.headbtn {
+  padding: 10px;
+  color: white;
+}
+.headbtn-1 {
+  background-color: darkblue;
+  padding: 32px 16px;
+}
+.headbtn-2 {
+  background-color: lightcyan;
+  padding: 32px 16px;
+}
+.headbtn-3 {
+  background-color: blue;
+  padding: 32px 16px;
 }
 
-aside {
-    background: pink;
-    margin: 1.5em;
-    padding: 1.25em;
-    float: right;
+/* Zack's styling */
+table,
+tr,
+td {
+  border: none;
 }
 
-section {
-    margin-bottom: 1vh;
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: lightblue;
 }
 
-section div {
-    border: solid;
-    border-width: thin;
-    margin: 0.25em;
-    padding: 0.125em;
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
 }
 
-.capitalized {
-    text-transform: capitalize;
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
 }
 
-ol {
-    list-style-type: lower-alpha;
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
 }
 
-ul {
-    list-style-type: square;
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
-footer {
-    border-top: dotted;
-    border-width: medium;
-    font-style: italic;
-    padding: 1%;
+
+/* Garrett's styling*/
+
+#row {
+  text-align: center;
 }
 
-#absolute1 {
-    position: absolute;
-    left: 20px;
-    top: 360px;
-    width: 300px;
-    height: 100px;
-    border: solid;
-    border-color: red;
-    padding: 3px;
-    background-color: #d0e0a0;
+#row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-#absolute2 {
-    position: absolute;
-    left: 300px;
-    top: 440px;
-    width: 200px;
-    height: 120px;
-    border: solid;
-    border-width: 20px;
-    border-color: green;
-    padding: 2px;
-    background-color: #ffffff;
+#col {
+  width: auto;
+  display: inline-block;
+}
+
+#subtitle {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Dastan's styling*/
+
+#container
+{
+  height: 800px;
+  position: relative;
+  width: 1000px;
+}
+#my_canvas
+{
+  background-color: black;
+}
+#controls
+{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
 }

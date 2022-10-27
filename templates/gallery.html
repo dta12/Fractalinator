@@ -1,10 +1,69 @@
 {% extends '_base.html' %}
 {% block content %}
-Images should have a few attributes set.
-You should minimally set the alt, width, and height attributes.<br>
-<img src="/s/slides_header.png" alt="header for slides" width="1133" height="361"><br><br>
-<img src="/s/gae-logo.png" alt="app engine logo" width="237" height="211"><br><br>
-You can also use width and height to warp / resize (though this isn't a great way to do it).
-<br><br>
-<img src="/s/slides_header.png" alt="header for slides" width="500" height="361">
+
+<!--
+	Sources:
+	https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp
+	https://stackoverflow.com/questions/44259830/aligning-4-divs-to-the-center-of-a-page
+-->
+
+
+<div id="subtitle">
+	<h2>Fractal Gallery</h2>
+</div>
+
+<div id="row">
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+</div>
+
+<div id="row">
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+	<div id="col">
+		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
+		<div id="subtitle">
+			This is where fractal information and buttons go
+		</div>
+	</div>
+</div>
+
 {% endblock %}
