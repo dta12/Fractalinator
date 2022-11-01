@@ -55,9 +55,26 @@ function check() {
         document.getElementById("confirmPassword").value) {
         document.getElementById('message').style.color = 'green';
         document.getElementById('message').innerHTML = 'Matching';
+        document.getElementById('signin').disabled = false;
     } else {
         document.getElementById('message').style.color = 'red';
         document.getElementById('message').innerHTML = 'Not matching';
+        document.getElementById('signin').disabled = true;
+    }
+}
+function state() {
+    const url = window.location.search;
+    const param = new URLSearchParams(url);
+    const c = param.get('state');
+    
+    if (c == "wrongCredentials"){
+        document.getElementById('state').innerHTML = 'Either your username or password is incorrect. Try again!';
+    }
+    else if (c == "userExists"){
+        document.getElementById('state').innerHTML = 'An account with this username already exists.';
+    }
+    else if (c == "created"){
+        document.getElementById('state').innerHTML = 'Account created. Log in!';
     }
 }
 function openTab(evt, tabName) {

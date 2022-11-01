@@ -3,10 +3,12 @@
 <!-- Sources: https://www.w3schools.com/howto/howto_js_tabs.asp
 https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page
 -->
-    
+
 <h2>
     Welcome to Fractalinator!
 </h2>
+
+<span id='state'></span>
 
 <div class="tab">
     <button class="tablinks active" onclick="openTab(event, 'Sign in')">Sign in</button>
@@ -14,7 +16,7 @@ https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field
 </div>
 
 <div id="Sign in" class="tabcontent" style="display: block;">    
-    <form action="/index.html">
+    <form method="post" action="/signedIn">
         <table>
             <tr>
                 <td>
@@ -38,7 +40,7 @@ https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field
 </div>
   
 <div id="Sign up" class="tabcontent">
-    <form action="/p/login.html">
+    <form method="post" action="/signedUp">
         <table>
             <tr>
                 <td>
@@ -68,8 +70,10 @@ https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field
                 </td>
             </tr>
         </table>        
-        <input type="submit" value="Sign up">
+        <input type="submit" value="Sign up" id="signin" disabled=true>
     </form>
 </div>
-
+<script>
+    window.onload = state();
+</script>
 {% endblock %}
