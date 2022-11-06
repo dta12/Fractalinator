@@ -86,23 +86,50 @@ td {
 
 /* Garrett's styling*/
 
-#row {
-  text-align: center;
+#galleryText {
+  color: #FFFFFF;
+  margin: 5px;
 }
 
-#row:after {
+#fractalInfo {
+  text-align: left;
+  width: 70%;
+  margin: 5px 0% 5px 5%;
+}
+
+#galleryButton {
+  text-align: center;
+  width: 45%;
+  display: inline-block;
+}
+
+img {
+  max-height: 300px;
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  background-color: #000000;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+#cell {
+  text-align: center;
+  width: 20%;
+  background-color: #505050;
+  border-radius: 10px;
+  padding:15px;
+  display: none;
+  margin: 0% 1% 1% 1%;
+}
+
+#cell:after {
   content: "";
   display: table;
   clear: both;
 }
 
-#col {
-  width: auto;
-  display: inline-block;
-}
-
-#subtitle {
-  padding: 10px;
+#cellContainer {
   text-align: center;
 }
 
