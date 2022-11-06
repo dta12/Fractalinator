@@ -92,3 +92,16 @@ function openTab(evt, tabName) {
 }
 
 // Garrett's functions
+function initCells() {
+    // At some point this will iterate per saved fractal
+    var i;
+    var num = 8;
+    const cellElement = document.querySelector("#cell");
+
+    for(i = 0; i < num; i++) {
+        var cellClone = cellElement.cloneNode(true);
+        cellClone.style["display"] = "inline-block";
+
+        cellElement.after(cellClone);
+    }
+}
