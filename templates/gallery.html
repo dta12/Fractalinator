@@ -7,63 +7,42 @@
 	https://stackoverflow.com/questions/44259830/aligning-4-divs-to-the-center-of-a-page
 -->
 
-
-<div id="subtitle">
+<head>
 	<h2>Fractal Gallery</h2>
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+
+<body onload="initCells()">
+<div id="cellContainer">
+	<section id="cell">
+		<div id="galleryImg">
+			<img src="../static/sample.png" alt="placeholder">
+		</div>
+		<section id="galleryInfo">
+			<div id="galleryText">
+				Fractal Info
+				<div id="fractalInfo">
+					Length: N/A<br>
+					Angle: N/A<br>
+					Branch Width: N/A
+				</div>
+			</div>
+			<div id="galleryButton">
+				<button type="button">
+					Open in Generator
+				</button>
+			</div>
+			<div id="galleryButton">
+				<button type="button">
+					Export as Image
+				</button>
+			</div>
+		</section>
+	</section>
 </div>
 
-<div id="row">
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-</div>
+<script src="/static/functions.js"></script>
 
-<div id="row">
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-	<div id="col">
-		<img src="../static/gae-logo.png" alt="placeholder" width="300" height="300">
-		<div id="subtitle">
-			This is where fractal information and buttons go
-		</div>
-	</div>
-</div>
+</body>
 
 {% endblock %}
