@@ -1,42 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text&family=Lora&display=swap");
 body {
-  font-family: Arial;
-  background-color: lightblue;
+  font-family: "Crimson Text";
+  background-color: 28282B;
+  background-image: url("fractwallpaper.jpeg");
+  color: FAF9F6;
+}
+* {
+  font-family: "Crimson Text";
+}
+.intext {
+  font-weight: 500;
+  font-size: 20px;
+}
+.head {
+  font-family: "Crimson Text";
+  font-size: 70px;
 }
 
 /* Rodrick's styling */
+li,
+a,
+button {
+  font-family: "Crimson Text", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: edf0f1;
+  text-decoration: none;
+}
 
-h1 {
-  color: midnightblue;
-  height: 100px;
-  background-color: cyan;
-  border-width: 0px 0px thin 0px;
-  border-style: solid;
+header {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+.logo {
+  cursor: pointer;
+  background-image: none;
+}
+.nav__links {
+  list-style: none;
+  text-align: center;
+}
+.nav__links li {
+  display: inline-block;
+  padding: 0px 20px;
+  background-color: 28282B;
+  border-radius: 50px;
+  display: inline;
+}
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+.nav__links li a:hover {
+  color: red;
+}
+
+button {
+  padding: 9px 25px;
+  background-color: 28282B;
+  color: red;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(255, 0, 0, 0.4);
 }
 
 .btn {
-  padding: 10px;
+  padding: 34px 50px;
+  background-color: red;
   color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-family: "Crimson Text";
 }
-.btn-1 {
-  background-color: purple;
-  padding: 32px 16px;
+.btn:hover {
+  background-color: rgba(255, 0, 0, 0.4);
 }
-
-.headbtn {
-  padding: 10px;
-  color: white;
+.reg {
+  transition: all 0.3s ease 0s;
 }
-.headbtn-1 {
-  background-color: darkblue;
-  padding: 32px 16px;
-}
-.headbtn-2 {
-  background-color: lightcyan;
-  padding: 32px 16px;
-}
-.headbtn-3 {
-  background-color: blue;
-  padding: 32px 16px;
+.reg:hover {
+  color: red;
 }
 
 /* Zack's styling */
@@ -83,11 +135,10 @@ td {
   border-top: none;
 }
 
-
 /* Garrett's styling*/
 
 #galleryText {
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 5px;
 }
 
@@ -118,7 +169,7 @@ img {
   width: 20%;
   background-color: #505050;
   border-radius: 10px;
-  padding:15px;
+  padding: 15px;
   display: none;
   margin: 0% 1% 1% 1%;
 }
@@ -135,22 +186,17 @@ img {
 
 /* Dastan's styling*/
 
-#container
-{
+#container {
   height: 800px;
   position: relative;
   width: 1000px;
 }
-#my_canvas
-{
+#my_canvas {
   background-color: black;
 }
-#controls
-{
+#controls {
   bottom: 0;
   left: 0;
   position: absolute;
   width: 100%;
 }
-
-
