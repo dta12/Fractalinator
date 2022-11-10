@@ -10,12 +10,10 @@ f = database.FractalData()
 
 
 @app.route('/')
-@app.route('/login.html')
-@app.route('/login')
 def root():
     # use render_template to convert the template code to HTML.
     # this function will look in the templates/ folder for your file.
-    return flask.render_template('login.html', state="null", page_title='Main Page')
+    return flask.render_template('index.html', state="null", page_title='Main Page')
 
 @app.route('/signedUp', methods=['POST', 'GET'])
 def loginSignUp():
