@@ -1,25 +1,16 @@
 {% extends '_base.html' %}
 {% block content %}
-<section>
-    This is an ordered list.
-    <ol>
-        <li>Item A</li>
-        <li>Item B</li>
-        <li>Item C</li>
-        <li>Item D</li>
-        <li>Item E</li>
-        <li>Item F</li>
-    </ol>
-</section>
-<section>
-    This is an unordered list.
-    <ul>
-        <li>Item A</li>
-        <li>Item B</li>
-        <li>Item C</li>
-        <li>Item D</li>
-        <li>Item E</li>
-        <li>Item F</li>
-    </ul>
-</section>
+<div id="container">
+    <button id="gen_button" onclick="draw(400, 600, 120, 0, 10)">generate</button>
+
+    <label for="Length">length:</label>
+    <input type="text" id="Length" name="Length" size="25">
+    
+    <label for="Angle">angle:</label>
+    <input type="text" id="Angle" name="Angle" size="25">
+
+    <label for="BranchWidth">branch width:</label>
+    <input type="text" id="BranchWidth" name="BranchWidth" size="25">
+    <canvas id="my_canvas" width="800" height="800"></canvas>
+  </div>
 {% endblock %}
