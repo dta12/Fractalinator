@@ -3,6 +3,7 @@ import flask
 from flask import url_for
 import database
 
+
 app = flask.Flask(__name__)
 f = database.FractalData()
 
