@@ -1,8 +1,4 @@
-/**
- *  autor: foqc
- *  github: foqc
- */
-// noprotect
+
 const canvas = document.getElementById('myCanvas')
 const ctx = canvas.getContext('2d')
 
@@ -15,7 +11,7 @@ let worker
 let colorPalette = []
 let REAL_SET = { start: -2, end: 1 }
 let IMAGINARY_SET = { start: -1, end: 1 }
-const ZOOM_FACTOR = 0.1
+const ZOOM_FACTOR = 0.2
 const TASKS = []
 
 const lagrange = ([X1, Y1], [X2, Y2], x) => (((Y1 * (x - X2)) / (X1 - X2)) + ((Y2 * (x - X1)) / (X2 - X1)))

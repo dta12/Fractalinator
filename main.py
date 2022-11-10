@@ -3,6 +3,9 @@ import flask
 from flask import url_for
 import database
 
+import os
+os.environ["GCLOUD_PROJECT"] = "frac-m2"
+
 app = flask.Flask(__name__)
 f = database.FractalData()
 
