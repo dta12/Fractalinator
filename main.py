@@ -16,6 +16,10 @@ def root():
     # this function will look in the templates/ folder for your file.
     return flask.render_template('index.html', state="null", page_title='Main Page')
 
+@app.route('/login')
+def login():
+    return flask.render_template('login.html')
+
 @app.route('/signedUp', methods=['POST', 'GET'])
 def loginSignUp():
     user = flask.request.form['username']
@@ -24,8 +28,8 @@ def loginSignUp():
         add = f.add_user(user, password)
         # if username exists already, display an error that an account already exists with username
         if (add != True):
-            return flask.redirect(url_for('root', state="userExists"))
-    return flask.redirect(url_for('root', state="created"))
+            return flask.redirect(url_for('login', state="userExists"))
+    return flask.redirect(url_for('login', state="created"))
 
 @app.route('/signedIn', methods=['POST', 'GET'])
 def loginSignIn():
@@ -36,7 +40,7 @@ def loginSignIn():
         if (f.credentials(user, password)):
             return flask.render_template('index.html', userID=f.getID(user))
     # display an error that either the username or password is incorrect
-    return flask.redirect(url_for('root', state="wrongCredentials"))
+    return flask.redirect(url_for('login', state="wrongCredentials"))
 
 # note in our previous example we used separate functions for each template.
 # we can use our parameterization here to apply templates for many requests.
