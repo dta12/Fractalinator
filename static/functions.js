@@ -26,7 +26,30 @@ function state() {
     else if (c == "created"){
         document.getElementById('state').innerHTML = 'Account created. Log in!';
     }
+    else if (c == "saved"){
+        document.getElementById('state').innerHTML = 'Fractal saved!';
+    }
 }
+
+function userGenerate() {
+    const url = window.location.search;
+    const param = new URLSearchParams(url);
+    const c = param.get('userID');
+    window.location.href = "/generation.html?userID="+ c;
+}
+function userIndex() {
+    const url = window.location.search;
+    const param = new URLSearchParams(url);
+    const c = param.get('userID');
+    window.location.href = "/index.html?userID="+ c;
+}
+function userGallery() {
+    const url = window.location.search;
+    const param = new URLSearchParams(url);
+    const c = param.get('userID');
+    window.location.href = "/gallery.html?userID="+ c;
+}
+
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
