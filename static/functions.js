@@ -94,14 +94,67 @@ function openTab(evt, tabName) {
 // Garrett's functions
 function initCells() {
     // At some point this will iterate per saved fractal
-    var i;
+    var i = 0;
     var num = 8;
     const cellElement = document.querySelector("#cell");
 
-    for(i = 0; i < num; i++) {
-        var cellClone = cellElement.cloneNode(true);
-        cellClone.style["display"] = "inline-block";
+    const url = window.location.search;
+    const param = new URLSearchParams(url);
+    const c = param.get('userID');
+    var userFractals = null;
 
-        cellElement.after(cellClone);
+    if(c == "null") {
+        //return;
+    } else {
+        userFractals = datastore.get_fractals(c);
     }
+
+    for(var i = 0; i < num; i++) {
+    //for(f in userFractals) {
+        var cellClone = cellElement.cloneNode(true);
+
+        cellElement.after(cellClone);   
+
+        // Update cell ID and class and display it
+        cellClone.id = "cell" + i;
+        cellClone.style["display"] = "inline-block";
+        cellClone.className = 'cell-class';
+
+        // Update cell info text
+        var infoContent = document.getElementsByClassName("fractalInfo");
+        //infoContent[1].textContent = "test";
+
+        // Update cell image
+        var imgContent = document.getElementsByClassName("fractalImg");
+        imgContent[1].id = "img" + i;
+        //imgContent[1].src = "";
+
+        // Update cell button
+        var buttonContent = document.getElementsByClassName("exportButton");
+        buttonContent[1].id = "btn" + i;
+    }
+}
+
+function exportGalleryImg(button) {
+    var cellNum = button.id.charAt(button.id.length - 1);
+
+    var canvas = document.createElement("canvas");
+    var context = canvas.getContext('2d');
+    var exportImg = new Image();
+
+    exportImg.onload = function() {
+        canvas.width = exportImg.width;
+        canvas.height = exportImg.height;
+
+        context.drawImage(exportImg, 0, 0);
+    };
+
+    exportImg.src = document.getElementById("img" + cellNum).src;
+
+    var link = document.createElement("a");
+    link.download = "fractal.png";
+    canvas.toBlob(function(blob) {
+        link.href = URL.createObjectURL(blob);
+        link.click();
+    }, "fractal/png");
 }
