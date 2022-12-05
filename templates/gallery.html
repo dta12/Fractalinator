@@ -5,6 +5,7 @@
 	Sources:
 	https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp
 	https://stackoverflow.com/questions/44259830/aligning-4-divs-to-the-center-of-a-page
+    https://redstapler.co/export-canvas-as-image-with-javascript/
 -->
 
 <head>
@@ -16,12 +17,12 @@
 <div id="cellContainer">
 	<section id="cell">
 		<div id="galleryImg">
-			<img src="../static/sample.png" alt="placeholder">
+			<img id="img" class="fractalImg" src="../static/sample.png" alt="placeholder">
 		</div>
 		<section id="galleryInfo">
 			<div id="galleryText">
 				Fractal Info
-				<div id="fractalInfo">
+				<div class="fractalInfo">
 					Length: N/A<br>
 					Angle: N/A<br>
 					Branch Width: N/A
@@ -33,7 +34,7 @@
 				</button>
 			</div>
 			<div id="galleryButton">
-				<button type="button">
+				<button onclick="exportGalleryImg(this)" type="button" class="exportButton">
 					Export as Image
 				</button>
 			</div>
