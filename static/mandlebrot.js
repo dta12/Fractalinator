@@ -14,6 +14,8 @@ let IMAGINARY_SET = { start: -1, end: 1 }
 const ZOOM_FACTOR = 0.1
 const TASKS = []
 
+let projname = "project"
+
 const lagrange = ([X1, Y1], [X2, Y2], x) => (((Y1 * (x - X2)) / (X1 - X2)) + ((Y2 * (x - X1)) / (X2 - X1)))
 
 const makeRGB = (r, g, b, k) => {
@@ -116,6 +118,14 @@ document.getElementById("save_button").onclick = function() {
     projname = prompt("Entere the project name: ", "")
     urlStr = "/fractal?userID="+ c +"&name=" + projname + "&realStart=" + REAL_SET.start + "&realEnd=" + REAL_SET.end + "&imagStart=" + IMAGINARY_SET.start + "&imagEnd=" + IMAGINARY_SET.end;
     window.location.href = urlStr;
+}
+
+document.getElementById("export_button").onclick = function() {
+    image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+    var link = document.createElement('a');
+    link.download = projname+".png";
+    link.href = image;
+    link.click();
 }
 
 const getRelativePoint = (pixel, length, set) => set.start + (pixel / length) * (set.end - set.start)
