@@ -12,6 +12,10 @@ body {
   font-weight: 500;
   font-size: 20px;
 }
+h2 {
+  margin: 0px;
+  margin-top: 5px;
+}
 .head {
   font-family: "Crimson Text";
   font-size: 70px;
@@ -72,7 +76,7 @@ button:hover {
 }
 
 .btn {
-  padding: 34px 50px;
+  padding: 34px 34px;
   background-color: red;
   color: white;
   border: none;
@@ -203,4 +207,11 @@ img {
   left: 0;
   position: absolute;
   width: 100%;
+}
+
+
+/* patches by Dastan*/
+
+a:hover{
+  cursor: pointer;
 }

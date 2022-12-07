@@ -113,15 +113,9 @@ document.getElementById("save_button").onclick = function() {
     const url = window.location.search;
     const param = new URLSearchParams(url);
     const c = param.get('userID');
-
-    urlStr = "/fractal?userID="+ c +"&name=" + "THIS IS A PLACEHOLDER FOR NAME NEEDS IMPLEMENTED" + "&realStart=" + REAL_SET.start + "&realEnd=" + REAL_SET.end + "&imagStart=" + IMAGINARY_SET.start + "&imagEnd=" + IMAGINARY_SET.end;
+    projname = prompt("Entere the project name: ", "")
+    urlStr = "/fractal?userID="+ c +"&name=" + projname + "&realStart=" + REAL_SET.start + "&realEnd=" + REAL_SET.end + "&imagStart=" + IMAGINARY_SET.start + "&imagEnd=" + IMAGINARY_SET.end;
     window.location.href = urlStr;
-}
-
-document.getElementById("export_button").onclick = function() { 
-    REAL_SET = { start: -2, end: 1 }
-    IMAGINARY_SET = { start: -1, end: 1 }
-    init()
 }
 
 const getRelativePoint = (pixel, length, set) => set.start + (pixel / length) * (set.end - set.start)
