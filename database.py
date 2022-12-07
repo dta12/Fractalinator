@@ -59,8 +59,40 @@ class FractalData():
         self.client.put(fractal)
 
     def get_fractals(self, userID):
+        result = ''
+        count = 0
         """Grabs all the fractal info from a given account"""
         query = self.client.query(kind='fractals')
         query.add_filter("userID", "=", userID)
+        
+        for fractal in query.fetch():
+            cellDiv = '<section id="cell">'
+            cellDiv += '<div id="galleryImg">'
+            cellDiv += '<canvas id=canvas' + count + ' class="img-class" height=300 width=300></div>'
 
-        return list(query.fetch())
+            cellDiv += '<section id="galleryInfo">'
+            cellDiv += '<div id="galleryText">Fractal Info<div class="fractal-info">'
+            cellDiv += 'Name: ' + fractal['fractalName'] + '<br>'
+            cellDiv += 'Real Start Span: ' + fractal['realStart'] + '<br>'
+            cellDiv += 'Real End Span: ' + fractal['realEnd'] + '<br>'
+            cellDiv += 'Imaginary Start Span: ' + fractal['imagStart'] + '<br>'
+            cellDiv += 'Imaginary End Span: ' + fractal['imagEnd'] + '</div></div>'
+
+            cellDiv += '<div id="galleryButton"><button type="button">Open in Generator</button></div>'
+            cellDiv += '<div id="galleryButton"><button onclick="exportGalleryImg(this)" type="button" class="exportButton">Export as Image</button></div>'
+            cellDiv += '</section></section>'
+        return cellDiv
+
+        """
+        for fractal in query.fetch():
+            outputDiv = '<div class="Fractal">%s, %s, %s, %s, %s</div>'
+            span = '<span class="%s">%s</span>'
+            nameSpan = span % ('Name:', fractal['fractalName'])
+            realStartSpan = span % ('Real Start:', fractal['realStart'])
+            realEndSpan = span % ('Real End:', fractal['realEnd'])
+            imagStartSpan = span % ('Imaginary Start:', fractal['imagStart'])
+            imagEndSpan = span % ('Imaginary End:', fractal['imagEnd'])
+            result += outputDiv % (nameSpan, realStartSpan, realEndSpan, imagStartSpan, imagEndSpan)
+            result += '\n'
+        return result
+        """
