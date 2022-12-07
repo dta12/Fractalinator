@@ -142,7 +142,7 @@ td {
   margin: 5px;
 }
 
-#fractalInfo {
+.fractalInfo {
   text-align: left;
   width: 70%;
   margin: 5px 0% 5px 5%;
@@ -165,6 +165,10 @@ img {
 }
 
 #cell {
+  display: none;
+}
+
+.cell-class {
   text-align: center;
   width: 20%;
   background-color: #505050;
@@ -174,7 +178,7 @@ img {
   margin: 0% 1% 1% 1%;
 }
 
-#cell:after {
+.cell-class:after {
   content: "";
   display: table;
   clear: both;
