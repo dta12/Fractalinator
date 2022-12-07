@@ -39,6 +39,15 @@ def loginSignIn():
     # display an error that either the username or password is incorrect
     return flask.redirect(url_for('root', state="wrongCredentials"))
 
+<<<<<<< Updated upstream
+=======
+@app.route('/gallery.html')
+def gallery():
+    userID = flask.request.args.get('userID', type=str)
+    fractalsList = f.get_fractals(userID)
+    return flask.render_template('/gallery.html', page_title = 'Fractalinator', fractals = fractalsList)
+    
+>>>>>>> Stashed changes
 # note in our previous example we used separate functions for each template.
 # we can use our parameterization here to apply templates for many requests.
 @app.route('/<requested_page>')
