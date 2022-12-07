@@ -1,38 +1,29 @@
 {% extends '_base.html' %}
 {% block content %}
+
 <section>
-<h2 class="head"><center><b>Fractalinator</b></center></h2>
-<section class="intext">
-<center><p>Welcome to your Fractalinator. Based on your input of numbers<br>
- your Fractalinator will generate a fractal model visual that you <br>
- can store in your own fractal library and/or even export if you'd like <br>
-If you're ready to generate your own fractal, hit generate below <br>
-Feel free to look at some fractal templates in the <a onclick="userGallery()" class="reg" style="color:red">gallery</a><br>
- If you're interested or want a starting point for your own!<br>
- If you're ready to generate your fractal from scratch, click generate below! </p><br><br><br>
+    <h2 class="head" style="margin: 0px;">
+        <center><b>Fractalinator</b></center>
+    </h2>
+    <section class="intext">
+        <center>
+            <p>Welcome to your Fractalinator. Based on your input of numbers<br>
+                your Fractalinator will generate a fractal model visual that you <br>
+                can store in your own fractal library and/or even export if you'd like <br>
+                If you're ready to generate your own fractal, hit generate below <br>
+                Feel free to look at some fractal templates in the <a onclick="userGallery()" class="reg"
+                    style="color:red">gallery</a><br>
+                If you're interested or want a starting point for your own!<br>
+                If you're ready to generate your fractal from scratch, click generate below! </p>
+    </section>
+    </center>
+    <br>
+    <center> <a onclick="userGenerate()" class="btn">
+            <font size="+2">Generate</font>
+        </a></center>
+
+
+
 </section>
- </center></section><br> <!-- Going to Center with CSS later -->
-
- <center> <a onclick="userGenerate()" class="btn"><font size="+2">Generate</font></a><br></center> 
- 
-
-
-</section>
-
- <!-- <section id="fractemplates">
-    <center>
-    <br><br><br><br>
-    <h2>Templates</h2>
-    <center><strong>Click any template below to explore it on the generation page</strong></center><br>
-    <a href="generation.html"> <img src="../static/gae-logo.png" alt="temp1" width="200" height="200"> 
-    <a href="generation.html"> <img src="../static/gae-logo.png" alt="temp1" width="200" height="200">
-    <a href="generation.html"> <img src="../static/gae-logo.png" alt="temp1" width="200" height="200"> <br>
-    <a href="generation.html"> <img src="../static/gae-logo.png" alt="temp1" width="200" height="200">
-    <a href="generation.html"> <img src="../static/gae-logo.png" alt="temp1" width="200" height="200">
-    <a href="generation.html"> <img src="../static/gae-logo.png" alt="temp1" width="200" height="200">
-     </center>
- </section>  -->
-
-
 
 {% endblock %}

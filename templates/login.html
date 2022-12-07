@@ -4,9 +4,6 @@
 https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page
 -->
 
-<h2>
-    Welcome to Fractalinator!
-</h2>
 
 <span id='state'></span>
 
@@ -15,7 +12,7 @@ https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field
     <button class="tablinks" onclick="openTab(event, 'Sign up')">Sign up</button>
 </div>
 
-<div id="Sign in" class="tabcontent" style="display: block;">    
+<div id="Sign in" class="tabcontent" style="display: block;">
     <form method="post" action="/signedIn">
         <table>
             <tr>
@@ -32,13 +29,13 @@ https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field
                 </td>
                 <td>
                     <input type="password" id="passwordSignIn" name="passwordSignIn"><br>
-                </td>   
+                </td>
             </tr>
-        </table>               
+        </table>
         <input type="submit" value="Sign in">
     </form>
 </div>
-  
+
 <div id="Sign up" class="tabcontent">
     <form method="post" action="/signedUp">
         <table>
@@ -66,10 +63,10 @@ https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field
                     <input type="password" id="confirmPassword" name="confirmPassword" onkeyup='check();'>
                 </td>
                 <td>
-                    <span id='message'></span><br>                    
+                    <span id='message'></span><br>
                 </td>
             </tr>
-        </table>        
+        </table>
         <input type="submit" value="Sign up" id="signin" disabled=true>
     </form>
 </div>
