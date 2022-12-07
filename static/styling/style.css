@@ -146,7 +146,7 @@ td {
   margin: 5px;
 }
 
-.fractalInfo {
+.fractal-info {
   text-align: left;
   width: 70%;
   margin: 5px 0% 5px 5%;
@@ -158,7 +158,7 @@ td {
   display: inline-block;
 }
 
-img {
+.img-class {
   max-height: 300px;
   max-width: 300px;
   width: auto;

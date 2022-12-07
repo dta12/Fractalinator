@@ -10,13 +10,10 @@
 
 
 
-<body onload="initCells()">
-	{% for fractal in fractals %}
-        <tr>
-            <td>{{ fractal }}</td>
-            <td>{{ states[state] }}</td>
-        </tr>
-    {% endfor %}
+<body>
+  <div id="cellContainer">
+        {{fractals}}
+	</div>
 
 	<script src="/static/scripts/functions.js"></script>
 
