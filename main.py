@@ -10,12 +10,18 @@ f = database.FractalData()
 
 
 @app.route('/')
-@app.route('/login.html')
-@app.route('/login')
 def root():
     # use render_template to convert the template code to HTML.
     # this function will look in the templates/ folder for your file.
-    return flask.render_template('login.html', state="null", page_title='Main Page')
+    return flask.render_template('index.html', state="null", page_title='Main Page')
+
+@app.route('/login')
+def login():
+    return flask.render_template('login.html')
+
+@app.route('/generation')
+def generation():
+    return flask.render_template('generation.html')
 
 @app.route('/signedUp', methods=['POST', 'GET'])
 def loginSignUp():
@@ -25,8 +31,8 @@ def loginSignUp():
         add = f.add_user(user, password)
         # if username exists already, display an error that an account already exists with username
         if (add != True):
-            return flask.redirect(url_for('root', state="userExists"))
-    return flask.redirect(url_for('root', state="created"))
+            return flask.redirect(url_for('login', state="userExists"))
+    return flask.redirect(url_for('login', state="created"))
 
 @app.route('/signedIn', methods=['POST', 'GET'])
 def loginSignIn():
@@ -35,19 +41,31 @@ def loginSignIn():
     if user and password:
         # if the username and password match what is in the database, then go to the index page
         if (f.credentials(user, password)):
-            return flask.render_template('index.html', userID=f.getID(user))
+            return flask.redirect(url_for('root', userID=f.getID(user)))
     # display an error that either the username or password is incorrect
-    return flask.redirect(url_for('root', state="wrongCredentials"))
+    return flask.redirect(url_for('login', state="wrongCredentials"))
 
-<<<<<<< Updated upstream
-=======
+@app.route('/fractal')
+def saveFractals():
+    userID = flask.request.args.get('userID', type=str)
+    fractalName = flask.request.args.get('name', default="Fractal", type=str)
+    realStart = flask.request.args.get('realStart', default=-2, type=float)
+    realEnd = flask.request.args.get('realEnd', default=1, type=float)
+    imagStart = flask.request.args.get('imagStart', default=-1, type=float)
+    imagEnd = flask.request.args.get('imagEnd', default=1, type=float)
+
+    add = f.add_fractal(userID, fractalName, realStart, realEnd, imagStart, imagEnd)
+    if (add != True):
+        return flask.render_template('login.html')
+    return flask.redirect(url_for('generation', state="saved", userID=userID, name=fractalName, realStart=realStart, realEnd=realEnd, imagStart=imagStart, imagEnd=imagEnd))
+
+
 @app.route('/gallery.html')
 def gallery():
     userID = flask.request.args.get('userID', type=str)
     fractalsList = f.get_fractals(userID)
     return flask.render_template('/gallery.html', page_title = 'Fractalinator', fractals = fractalsList)
     
->>>>>>> Stashed changes
 # note in our previous example we used separate functions for each template.
 # we can use our parameterization here to apply templates for many requests.
 @app.route('/<requested_page>')

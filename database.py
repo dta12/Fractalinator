@@ -43,20 +43,26 @@ class FractalData():
         for entity in query.fetch():
             return str(entity.key)  
 
-    def add_fractal(self, userID, length, angle, branchwidth):
+    def add_fractal(self, userID, name, realStart, realEnd, imagStart, imagEnd):
         """Add fractal to fractal database using userID """
+        if (userID == "null"):
+            return False
+        
         key = self.client.key("fractals")
         fractal = datastore.Entity(key)
 
         fractal.update(
             {
                 "userID": userID,
-                "length": length,
-                "angle": angle,
-                "branchWidth": branchwidth
+                "fractalName": name,
+                "realStart": realStart,
+                "realEnd": realEnd,
+                "imagStart": imagStart,
+                "imagEnd": imagEnd
             }
         )
         self.client.put(fractal)
+        return True
 
     def get_fractals(self, userID):
         result = ''

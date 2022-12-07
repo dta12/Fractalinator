@@ -1,16 +1,14 @@
 {% extends '_base.html' %}
 {% block content %}
+
 <div id="container">
-    <button id="gen_button" onclick="draw(400, 600, 120, 0, 10)">generate</button>
+    <span id='state'></span>
+    <button id="reset_button">reset</button>
+    <button id="save_button">save</button>
+    <button id="export_button">download</button>
 
-    <label for="Length">length:</label>
-    <input type="text" id="Length" name="Length" size="25">
-    
-    <label for="Angle">angle:</label>
-    <input type="text" id="Angle" name="Angle" size="25">
-
-    <label for="BranchWidth">branch width:</label>
-    <input type="text" id="BranchWidth" name="BranchWidth" size="25">
-    <canvas id="my_canvas" width="800" height="800"></canvas>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
   </div>
+  <script src="/static/scripts/mandlebrot.js"></script>
+  <script>window.onload = state();</script>
 {% endblock %}

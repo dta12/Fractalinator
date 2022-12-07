@@ -1,21 +1,25 @@
 <html>
-    <head>
-        <link rel= "stylesheet" type= "text/css" href= "/static/style.css">
-        <script src="/static/functions.js"></script>
-        <title>Fractalinator</title>
-    </head>
-    <body>
-        <header>
-            <h1>Fractalinator</h1>
-        </header>
-        <nav>
-            <a href="/login.html">Login</a>
-            <a href="/gallery.html">Gallery</a>
-            <a href="/generation.html">Generate</a>
-        </nav>
-        <section>
-            {% block content %}{% endblock %}
-        </section>
-    </body>
-    
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/static//styling/style.css" />
+  <title>Fractalinator</title>
+  <link rel="shortcut icon" href="#" />
+</head>
+
+<body>
+  <header>
+    <img class="logo" src="/static/resources/logo-white-1.png" alt="logo" width="20" height="10" />
+    <nav>
+      <ul class="nav__links">
+        <li><a onclick="userIndex()">Home</a></li>
+        <li><a onclick="userGallery()">Gallery</a></li>
+        <li><a onclick="userGenerate()">Generate</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="/login.html"><button>Login</button></a>
+  </header>
+  <section>{% block content %}{% endblock %}</section>
+  <script src="/static/scripts/functions.js"></script>
+</body>
+
 </html>
