@@ -169,7 +169,7 @@ td {
 }
 
 #cell {
-  display: none;
+  display: inline-block;
 }
 
 .cell-class {
@@ -178,7 +178,7 @@ td {
   background-color: #505050;
   border-radius: 10px;
   padding: 15px;
-  display: none;
+  display: inline-block;
   margin: 0% 1% 1% 1%;
 }
 

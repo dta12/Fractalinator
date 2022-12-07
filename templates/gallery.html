@@ -13,19 +13,19 @@
 <body>
 	<div id="cellContainer">
         {% for f in fractals %}
-        <section id="cell">
-			<div id="galleryImg">
-				<canvas id=f[name] class="img-class" height=300 width=300>
+        <section id="cell" class="cell-class">
+            <div> id="galleryImg">
+				<canvas id="galleryCanvas" class="img-class" height=300 width=300>
 			</div>
 			<section id="galleryInfo">
 				<div id="galleryText">
 					Fractal Info
 					<div class="fractalInfo">
-						Name: {{ f[name] }}<br>
-                        Real Start: {{ f[realStart] }}<br>
-                        Real End: {{ f[realEnd] }}<br>
-                        Imaginary Start: {{ f[imagStart] }}<br>
-                        Imaginary End: {{ f[imagEnd] }}
+						Name: {{ f["fractalName"] }}<br>
+                        Real Start: {{ f["realStart"] }}<br>
+                        Real End: {{ f["realEnd"] }}<br>
+                        Imaginary Start: {{ f["imagStart"] }}<br>
+                        Imaginary End: {{ f["imagEnd"] }}
 					</div>
 				</div>
 				<div id="galleryButton">

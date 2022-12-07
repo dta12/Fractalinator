@@ -63,7 +63,7 @@ def saveFractals():
 @app.route('/gallery.html')
 def gallery():
     userID = flask.request.args.get('userID', type=str)
-    fractalsList = [dict(fractal) for fractal in f.get_fractals(userID)]
+    fractalsList = [dict(fractal) for fractal in list(f.get_fractals(userID))]
     return flask.render_template('/gallery.html', page_title = 'Fractalinator', fractals = fractalsList)
     
 # note in our previous example we used separate functions for each template.
