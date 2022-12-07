@@ -11,8 +11,36 @@
 
 
 <body>
-  <div id="cellContainer">
-        {{fractals}}
+	<div id="cellContainer">
+        {% for f in fractals %}
+        <section id="cell">
+			<div id="galleryImg">
+				<canvas id=f[name] class="img-class" height=300 width=300>
+			</div>
+			<section id="galleryInfo">
+				<div id="galleryText">
+					Fractal Info
+					<div class="fractalInfo">
+						Name: {{ f[name] }}<br>
+                        Real Start: {{ f[realStart] }}<br>
+                        Real End: {{ f[realEnd] }}<br>
+                        Imaginary Start: {{ f[imagStart] }}<br>
+                        Imaginary End: {{ f[imagEnd] }}
+					</div>
+				</div>
+				<div id="galleryButton">
+					<button type="button">
+						Open in Generator
+					</button>
+				</div>
+				<div id="galleryButton">
+					<button onclick="exportGalleryImg(this)" type="button" class="exportButton">
+						Export as Image
+					</button>
+				</div>
+			</section>
+		</section>
+        {% endfor %}
 	</div>
 
 	<script src="/static/scripts/functions.js"></script>
