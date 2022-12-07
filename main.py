@@ -59,8 +59,13 @@ def saveFractals():
         return flask.render_template('login.html')
     return flask.redirect(url_for('generation', state="saved", userID=userID, name=fractalName, realStart=realStart, realEnd=realEnd, imagStart=imagStart, imagEnd=imagEnd))
 
-
-
+@app.route('/gallery.html')
+def viewGallery():
+    userID = flask.request.args.get('userID', type=str)
+    print(userID)
+    fracs = f.get_fractals(userID)
+    print(fracs)
+    return flask.render_template('gallery.html')
 # note in our previous example we used separate functions for each template.
 # we can use our parameterization here to apply templates for many requests.
 @app.route('/<requested_page>')
