@@ -81,6 +81,8 @@ class FractalData():
             cellDiv += '<div id="galleryButton"><button type="button">Open in Generator</button></div>'
             cellDiv += '<div id="galleryButton"><button onclick="exportGalleryImg(this)" type="button" class="exportButton">Export as Image</button></div>'
             cellDiv += '</section></section>'
+
+            count += 1
         return cellDiv
 
         """
