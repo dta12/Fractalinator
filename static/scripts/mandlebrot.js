@@ -82,7 +82,7 @@ const draw = (res) => {
 
 const init = () => {
     if (worker) worker.terminate()
-    worker = new Worker('/static/worker.js')
+    worker = new Worker('/static/scripts/worker.js')
     worker.postMessage({ w: WIDTH, h: HEIGHT, realSet: REAL_SET, imaginarySet: IMAGINARY_SET, isSettingUp: true })
     start()
     colorPalette = palette()

@@ -63,8 +63,8 @@ def saveFractals():
 def viewGallery():
     userID = flask.request.args.get('userID', type=str)
     print(userID)
-    fracs = f.get_fractals(userID)
-    print(fracs)
+    fs = [dict(fractal) for fractal in list(f.get_fractals(userID))]
+    print(fs) // to be changed
     return flask.render_template('gallery.html')
 # note in our previous example we used separate functions for each template.
 # we can use our parameterization here to apply templates for many requests.

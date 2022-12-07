@@ -2,7 +2,7 @@
 body {
   font-family: "Crimson Text";
   background-color: 28282B;
-  background-image: url("fractwallpaper.jpeg");
+  background-image: url("../resources/fractwallpaper.jpeg");
   color: FAF9F6;
 }
 * {
