@@ -2,10 +2,6 @@ from fileinput import filename
 import flask
 from flask import url_for
 import database
-import os
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS']="/Users/atomic/Downloads/application_default_credentials.json"
-os.environ["GCLOUD_PROJECT"] = "frac-final"
 
 app = flask.Flask(__name__)
 f = database.FractalData()
