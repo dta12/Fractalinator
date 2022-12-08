@@ -1,11 +1,23 @@
 
-const canvas = document.getElementById('myCanvas')
-const ctx = canvas.getContext('2d')
+var canvas = document.getElementById('myCanvas')
+var page = false // assume we start in gallery
+var ctx
+if(canvas != null){
+    ctx = canvas.getContext('2d')
+    page = true // we are in generations
+}
 
-const WIDTH = 800
-const HEIGHT = 600
-ctx.canvas.width = WIDTH
-ctx.canvas.height = HEIGHT
+var WIDTH = 800
+var HEIGHT = 600
+if(!page){
+    WIDTH=200
+    HEIGHT=150
+}
+
+if(canvas != null){
+    ctx.canvas.width = WIDTH
+    ctx.canvas.height = HEIGHT
+}
 
 let worker
 let colorPalette = []
@@ -88,46 +100,76 @@ const init = () => {
     colorPalette = palette()
     worker.onmessage = draw
 }
-
-canvas.addEventListener('dblclick', e => {
-    const zfw = (WIDTH * ZOOM_FACTOR)
-    const zfh = (HEIGHT * ZOOM_FACTOR)
-
-    REAL_SET = {
-        start: getRelativePoint(e.pageX - canvas.offsetLeft - zfw, WIDTH, REAL_SET),
-        end: getRelativePoint(e.pageX - canvas.offsetLeft + zfw, WIDTH, REAL_SET)
+if(canvas != null){
+    canvas.addEventListener('dblclick', e => {
+        const zfw = (WIDTH * ZOOM_FACTOR)
+        const zfh = (HEIGHT * ZOOM_FACTOR)
+    
+        REAL_SET = {
+            start: getRelativePoint(e.pageX - canvas.offsetLeft - zfw, WIDTH, REAL_SET),
+            end: getRelativePoint(e.pageX - canvas.offsetLeft + zfw, WIDTH, REAL_SET)
+        }
+        IMAGINARY_SET = {
+            start: getRelativePoint(e.pageY - canvas.offsetTop - zfh, HEIGHT, IMAGINARY_SET),
+            end: getRelativePoint(e.pageY - canvas.offsetTop + zfh, HEIGHT, IMAGINARY_SET)
+        }
+    
+        init()
+    })
+}
+var reset = document.getElementById("reset_button")
+var save = document.getElementById("save_button")
+var export_btn = document.getElementById("export_button")
+if(typeof(reset) != 'undefined' && reset != null){
+    reset.onclick = function() {
+        const canvas = document.getElementById('myCanvas')
+        const ctx = canvas.getContext('2d')
+        REAL_SET = { start: -2, end: 1 }
+        IMAGINARY_SET = { start: -1, end: 1 }
+        init()
     }
-    IMAGINARY_SET = {
-        start: getRelativePoint(e.pageY - canvas.offsetTop - zfh, HEIGHT, IMAGINARY_SET),
-        end: getRelativePoint(e.pageY - canvas.offsetTop + zfh, HEIGHT, IMAGINARY_SET)
+}
+if(typeof(save) != 'undefined' && save != null){
+    save.onclick = function() {
+        const url = window.location.search;
+        const param = new URLSearchParams(url);
+        const c = param.get('userID');
+        projname = prompt("Entere the project name: ", "")
+        urlStr = "/fractal?userID="+ c +"&name=" + projname + "&realStart=" + REAL_SET.start + "&realEnd=" + REAL_SET.end + "&imagStart=" + IMAGINARY_SET.start + "&imagEnd=" + IMAGINARY_SET.end;
+        window.location.href = urlStr;
     }
-
-    init()
-})
-
-document.getElementById("reset_button").onclick = function() { 
-    REAL_SET = { start: -2, end: 1 }
-    IMAGINARY_SET = { start: -1, end: 1 }
-    init()
+}
+if(typeof(export_btn) != 'undefined' && export_btn != null){
+    export_btn.onclick = function() {
+        image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+        var link = document.createElement('a');
+        link.download = projname+".png";
+        link.href = image;
+        link.click();
+    }
 }
 
-document.getElementById("save_button").onclick = function() {
-    const url = window.location.search;
-    const param = new URLSearchParams(url);
-    const c = param.get('userID');
-    projname = prompt("Entere the project name: ", "")
-    urlStr = "/fractal?userID="+ c +"&name=" + projname + "&realStart=" + REAL_SET.start + "&realEnd=" + REAL_SET.end + "&imagStart=" + IMAGINARY_SET.start + "&imagEnd=" + IMAGINARY_SET.end;
-    window.location.href = urlStr;
-}
-
-document.getElementById("export_button").onclick = function() {
-    image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
-    var link = document.createElement('a');
-    link.download = projname+".png";
-    link.href = image;
-    link.click();
+function initCells() {
+    var canvases = document.getElementsByClassName("img-class")
+    for(var i = 0; i < canvases.length; i++){
+        canvas = canvases[i]
+        var rstart = parseFloat(document.getElementById("realStart" + canvas.id).innerHTML)
+        var rend = parseFloat(document.getElementById("realEnd" + canvas.id).innerHTML)
+        var imagstart = parseFloat(document.getElementById("imagStart" + canvas.id).innerHTML)
+        var imagend = parseFloat(document.getElementById("imagEnd" + canvas.id).innerHTML)
+        ctx = canvas.getContext('2d')
+        ctx.canvas.width = 200
+        ctx.canvas.height = 150
+        REAL_SET = { start: rstart, end: rend }
+        IMAGINARY_SET = { start: imagstart, end: imagend }
+        init()
+    }
 }
 
 const getRelativePoint = (pixel, length, set) => set.start + (pixel / length) * (set.end - set.start)
 
-init()
+if(page){
+    init()
+}else{
+    initCells()
+}

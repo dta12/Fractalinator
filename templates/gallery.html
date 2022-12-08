@@ -15,17 +15,17 @@
         {% for f in fractals %}
         <section id="cell" class="cell-class">
             <div id="galleryImg">
-				<canvas id="{{ f["fractalName"] }}" class="img-class" height=300 width=300>
+				<canvas id="{{ f["fractalName"] }}" class="img-class" height=150 width=200>
 			</div>
 			<section id="galleryInfo">
 				<div id="galleryText">
 					Fractal Info
 					<div class="fractalInfo">
-						Name: {{ f["fractalName"] }}<br>
-                        Real Start: {{ f["realStart"] }}<br>
-                        Real End: {{ f["realEnd"] }}<br>
-                        Imaginary Start: {{ f["imagStart"] }}<br>
-                        Imaginary End: {{ f["imagEnd"] }}
+						Name: <a id="fractalName{{ f["fractalName"] }}">{{ f["fractalName"] }}</a><br>
+                        Real Start: <a id="realStart{{ f["fractalName"] }}">{{ f["realStart"] }}</a><br>
+                        Real End: <a id="realEnd{{ f["fractalName"] }}">{{ f["realEnd"] }}</a><br>
+                        Imaginary Start: <a id="imagStart{{ f["fractalName"] }}">{{ f["imagStart"] }}</a><br>
+                        Imaginary End: <a id="imagEnd{{ f["fractalName"] }}">{{ f["imagEnd"] }}</a>
 					</div>
 				</div>
 				<div id="galleryButton">
@@ -43,7 +43,7 @@
         {% endfor %}
 	</div>
 
-	<script src="/static/scripts/functions.js"></script>
+    <script src="/static/scripts/mandlebrot.js"></script>
 
 </body>
 
