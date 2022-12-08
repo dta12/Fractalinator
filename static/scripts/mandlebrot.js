@@ -1,7 +1,9 @@
-
 var canvas = document.getElementById('myCanvas')
 var page = false // assume we start in gallery
 var ctx
+var canvases
+var canvasCount
+var canvasIndex = 0
 if(canvas != null){
     ctx = canvas.getContext('2d')
     page = true // we are in generations
@@ -38,6 +40,9 @@ const makeRGB = (r, g, b, k) => {
 
     return [r, g, b]
 }
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
 
 /**
  * get 250 colors from  interpolation (between 6 colors):
@@ -82,6 +87,12 @@ const start = () => {
 const draw = (res) => {
     if (TASKS.length > 0)
         worker.postMessage({ col: TASKS.shift() })
+    else {
+        if(canvasIndex < (canvasCount - 1) && !page) {
+            canvasIndex += 1
+            initCell(canvasIndex)
+        }
+    }
 
     const { col, mandelbrotSets } = res.data
     for (let i = 0; i < HEIGHT; i++) {
@@ -90,10 +101,11 @@ const draw = (res) => {
         ctx.fillStyle = `rgb(${c[0]}, ${c[1]}, ${c[2]})`
         ctx.fillRect(col, i, 1, 1)
     }
+
 }
 
 const init = () => {
-    if (worker) worker.terminate()
+    if(worker) worker.terminate()
     worker = new Worker('/static/scripts/worker.js')
     worker.postMessage({ w: WIDTH, h: HEIGHT, realSet: REAL_SET, imaginarySet: IMAGINARY_SET, isSettingUp: true })
     start()
@@ -150,25 +162,79 @@ if(typeof(export_btn) != 'undefined' && export_btn != null){
 }
 
 function initCells() {
-    var canvases = document.getElementsByClassName("img-class")
-    for(var i = 0; i < canvases.length; i++){
-        canvas = canvases[i]
-        var rstart = parseFloat(document.getElementById("realStart" + canvas.id).innerHTML)
-        var rend = parseFloat(document.getElementById("realEnd" + canvas.id).innerHTML)
-        var imagstart = parseFloat(document.getElementById("imagStart" + canvas.id).innerHTML)
-        var imagend = parseFloat(document.getElementById("imagEnd" + canvas.id).innerHTML)
-        ctx = canvas.getContext('2d')
-        ctx.canvas.width = 200
-        ctx.canvas.height = 150
-        REAL_SET = { start: rstart, end: rend }
-        IMAGINARY_SET = { start: imagstart, end: imagend }
-        init()
-    }
+    canvases = document.getElementsByClassName("img-class")
+    canvasCount = canvases.length
+    initCell(canvasIndex)
+}
+
+function initCell(index) {
+    var canvas = canvases[index]
+    var rstart = parseFloat(document.getElementById("realStart" + canvas.id).innerHTML)
+    var rend = parseFloat(document.getElementById("realEnd" + canvas.id).innerHTML)
+    var imagstart = parseFloat(document.getElementById("imagStart" + canvas.id).innerHTML)
+    var imagend = parseFloat(document.getElementById("imagEnd" + canvas.id).innerHTML)
+    ctx = canvas.getContext('2d')
+    ctx.canvas.width = 200
+    ctx.canvas.height = 150
+    REAL_SET = { start: rstart, end: rend }
+    IMAGINARY_SET = { start: imagstart, end: imagend }
+    init()
 }
 
 const getRelativePoint = (pixel, length, set) => set.start + (pixel / length) * (set.end - set.start)
 
+// Open in Generator from Gallery
+function openInGen(button) {
+    var fractalName = button.id.substring(9)
+
+    const url = window.location.search;
+    const param = new URLSearchParams(url);
+    const c = param.get('userID');
+
+    var rstart = document.getElementById("realStart" + fractalName).innerHTML
+    var rend = document.getElementById("realEnd" + fractalName).innerHTML
+    var imagstart = document.getElementById("imagStart" + fractalName).innerHTML
+    var imagend = document.getElementById("imagEnd" + fractalName).innerHTML
+
+    window.location.href = "/generation.html?userID=" + c + "&realStart=" + rstart + "&realEnd=" + rend + "&imagStart=" + imagstart + "&imagEnd=" + imagend;
+}
+
+const exportAsImg = async(button) => {
+    canvas = document.getElementById("exportCanvas")
+    name = button.id.substring(11)
+    var rstart = parseFloat(document.getElementById("realStart" + name).innerHTML)
+    var rend = parseFloat(document.getElementById("realEnd" + name).innerHTML)
+    var imagstart = parseFloat(document.getElementById("imagStart" + name).innerHTML)
+    var imagend = parseFloat(document.getElementById("imagEnd" + name).innerHTML)
+    ctx = canvas.getContext('2d')
+    WIDTH = 800
+    HEIGHT = 600
+    ctx.canvas.width = 800
+    ctx.canvas.height = 600
+    REAL_SET = { start: rstart, end: rend }
+    IMAGINARY_SET = { start: imagstart, end: imagend }
+    init()
+    await delay(3000);
+    image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+    var link = document.createElement('a');
+    link.download = projname+".png";
+    link.href = image;
+    link.click();
+}
+
 if(page){
+    const url = window.location.search;
+    var param = new URLSearchParams(url);
+    
+    if(param.has('realStart')) {
+        // From gallery
+        REAL_SET.start = parseFloat(param.get('realStart'))
+        REAL_SET.end = parseFloat(param.get('realEnd'))
+
+        IMAGINARY_SET.start = parseFloat(param.get('imagStart'))
+        IMAGINARY_SET.end = parseFloat(param.get('imagEnd'))
+    }
+
     init()
 }else{
     initCells()

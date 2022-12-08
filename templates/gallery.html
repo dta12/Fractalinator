@@ -29,18 +29,19 @@
 					</div>
 				</div>
 				<div id="galleryButton">
-					<button type="button">
-						Open in Generator
-					</button>
+					<button id="openInGen{{ f["fractalName"] }}" onclick="openInGen(this)" type="button">
+                        Open in Generator
+                    </button>
 				</div>
 				<div id="galleryButton">
-					<button onclick="exportGalleryImg(this)" type="button" class="exportButton">
-						Export as Image
-					</button>
+					<button id="exportAsImg{{ f["fractalName"] }}" onclick="exportAsImg(this)" type="button">
+                        Export as Image
+                    </button>
 				</div>
 			</section>
 		</section>
         {% endfor %}
+        <canvas id="exportCanvas" style="display: none;" width=800 height=600>
 	</div>
 
     <script src="/static/scripts/mandlebrot.js"></script>
