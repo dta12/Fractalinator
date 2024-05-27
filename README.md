@@ -1,12 +1,37 @@
 # Fractalinator
-## Link: https://fractalinator-365200.ue.r.appspot.com/
+
+## Link: [Fractalinator](https://fractalinator-365200.ue.r.appspot.com/)
+
 ## Description
-This project is called Fractalinator. It creates parametrized fractal model visuals based on the user’s input and stores it. Users will be able to log in to the site where they can generate fractals and store them in their own fractal library that can be accessed at any time. Additionally, fractals can be exported into the user’s choice of image formats.
-## Dastan
-Responsible for the creating the fractal algorithm and the generation page as well as exporting the fractals.
-## Garrett
-Responsible for the gallery page and connecting the user project to the database backend
-## Zack
-Responsible for the backend database modelsfor the users and the fractals as well as the query parsing for each.
-## Rodrick
-Responsible for the main styling of the entire project as well as the homepage design.
+Fractalinator is a web-based application that allows users to create parametrized fractal models based on their input, store them in a personal library, and export them in various image formats. Users can log in to generate and access their fractals anytime.
+
+## Technologies and Languages Used
+
+**Frontend Development**: HTML, CSS, JavaScript (including Canvas API)
+
+**Backend Development**: Python, Flask
+
+**Database**: Google Cloud SQL
+
+**Cloud Services**: Google Cloud Platform (GCP), Google App Engine
+
+**Version Control and Collaboration**: Git, GitHub
+
+**User Authentication**: JWT (JSON Web Tokens)
+
+**APIs**: RESTful APIs
+
+
+## Team Roles
+
+### Dastan
+Responsible for developing the fractal generation algorithm and the generation page. Also implemented the functionality for exporting fractals. Utilizing JavaScript, ensured that users could create complex fractal designs based on their input and save these designs in various image formats.
+
+### Garrett
+Focused on the frontend and database connection aspects of the project. Developed the gallery page, allowing users to view their saved fractals. Additionally, connected the user interface to the database backend, integrating the frontend with the storage and retrieval system using HTML and JavaScript.
+
+### Zack
+Handled the backend development, designing and implementing the database models for both users and fractals. Also managed query parsing to ensure efficient data retrieval and manipulation. His work, primarily done in Python, was crucial for hosting a queryable database on Google Cloud.
+
+### Rodrick
+Was in charge of the project's overall styling and design. Focused on the aesthetic aspects, creating a visually appealing and user-friendly interface. His use of CSS brought cohesion to the project's look and feel, particularly evident in the polished homepage design.
